@@ -64,8 +64,8 @@ bool sort_points_index(cv::Vec2i p1, cv::Vec2i p2)
 }
 
 //Function creates a histogram and returns the location of the peaks
-//The location of the peaks is determined by going through all the histogram 
-//values sorted from biggest to smallest and checking whether the adjacent 
+//The location of the peaks is determined by going through all the histogram
+//values sorted from biggest to smallest and checking whether the adjacent
 //values have been already visited
 cv::Vec2i makeHistogram(cv::Mat& img, cv::Mat& res)
 {
@@ -121,8 +121,8 @@ cv::Vec2i makeHistogram(cv::Mat& img, cv::Mat& res)
 	//Draw the histogram
 	for(int i = MARGIN; i < img.cols - MARGIN; ++i)
 	{
-		cv::Point p(i, (int)((1 - (double)sum[i]/maxSum)*res.rows));	
-		cv::line(res, prev, p, cv::Scalar(0, 0, 255), 2, CV_AA);		
+		cv::Point p(i, (int)((1 - (double)sum[i]/maxSum)*res.rows));
+		cv::line(res, prev, p, cv::Scalar(0, 0, 255), 2, CV_AA);
 		prev = p;
 	}
 
@@ -176,7 +176,7 @@ cv::Mat polyFit(std::vector<cv::Point2f> data)
 		for(int i = 0; i < w.size(); ++i) w[i] = 0;
 
 	}
-	
+
 	//solve the system of equations
 	cv::invert(A, A_inv);
 	cv::Mat W_res = A_inv * B;
@@ -199,7 +199,7 @@ void slidingWindowPixelSearch(cv::Mat& img, int X1, int X2)
 	if(xl < 0) xl = 0;
 	if(xr < 0) xr = 0;
 	int y = img.rows - 1, sum_of_weighted_x = 0, sum_of_intensity = 0, intensity, xl_prev = xl, xr_prev = xr;
-	static int *avg_x = new int[NWIN]; 
+	static int *avg_x = new int[NWIN];
 	avg_x[0] = xl + WINW/2;
 
 
@@ -281,7 +281,7 @@ public:
 	ImageConverter() : it_(nh_)
 	{
 		image_sub_ = it_.subscribe("/image_raw", 1, &ImageConverter::imageCb, this);
-		image_pub_ = it_.advertise("/line_finder/output_video", 1);
+	//	image_pub_ = it_.advertise("/line_finder/output_video", 1);
 
 		cv::namedWindow(OPENCV_WINDOW1);
 		cv::namedWindow(OPENCV_WINDOW2);
@@ -328,7 +328,7 @@ public:
 		cv::imshow(OPENCV_WINDOW1, cv_ptr->image);
 		cv::waitKey(3);
 
-		image_pub_.publish(cv_ptr->toImageMsg());
+		//image_pub_.publish(cv_ptr->toImageMsg());
 	}
 };
 
