@@ -1,5 +1,5 @@
 # line_finder
-`line_finder` is a ros node that is supposed to run with the gazebo simulator (launch and urdf files can be found [here])(https://github.com/KNR-Selfie/selfie_carolocup2019_simulator) that detects the center lane of a two lane road.
+`line_finder` is a ros node that is supposed to run with the gazebo simulator (launch and urdf files can be found [here](https://github.com/KNR-Selfie/selfie_carolocup2019_simulator)) that detects the center lane of a two lane road.
 
 ## Subscribed topics
 `/image_raw`
