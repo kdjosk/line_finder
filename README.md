@@ -1,6 +1,21 @@
 # line_finder
-`line_finder` is a ros node that is supposed to run with the [gazebo simulator](https://github.com/KNR-Selfie/selfie_carolocup2019_simulator)  that detects the center lane
-(in current version) and displays the whole process in three different windows. The first one is the unprocessed image, the second one is the same image but after the execution of the algorithm, and the third one is a histogram with marked peaks that show the location of the right and center lane.
+`line_finder` is a ros node that is supposed to run with the gazebo simulator (launch and urdf files can be found [here])(https://github.com/KNR-Selfie/selfie_carolocup2019_simulator) that detects the center lane of a two lane road.
 
 ## Subscribed topics
 `/image_raw`
+
+## Raw image
+
+Raw images come from a camera mounted on a car model in Gazebo
+![im3](https://user-images.githubusercontent.com/17860903/55499304-faaec280-5645-11e9-9534-93a0d6fd71ce.png)
+
+## Histogram with peak detection
+
+The peaks are being marked with green vertical lines
+![im1](https://user-images.githubusercontent.com/17860903/55499109-79efc680-5645-11e9-8a95-dc95c0bc7d1f.png)
+
+## Detected lines
+
+A second order polynomial is used to approximate the curve made by the center points of the rectangles 
+![im2](https://user-images.githubusercontent.com/17860903/55499216-c4714300-5645-11e9-9abc-e13b7416b0c2.png)
+
